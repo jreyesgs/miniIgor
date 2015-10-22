@@ -1,5 +1,6 @@
 # -*- coding:utf8 -*-
 import time
+import codecs
 import tweepy
 
 # Sustituir <Falta> por las credenciales de tu app de twitter
@@ -13,7 +14,7 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
 api = tweepy.API(auth)
 try:
-	with open('tweetsLog.txt', 'r+') as tweetsLog:
+	with codecs.open('tweetsLog.txt', 'r+', 'utf-8') as tweetsLog:
 		tweets = tweetsLog.readlines()
 
 	for tweet in tweets[:]:
