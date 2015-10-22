@@ -23,7 +23,7 @@ try:
 		tweet = tweet.strip(r'\n')
 		if len(tweet)<=140 and len(tweet)>0:
 			print ("Hablando...")
-			twitter.update_status(status=tweet)
+			api.update_status(status=tweet)
 			with open ('hablando.txt', 'w') as tweetsLog:
 				tweets.remove(tweet)
 				tweetsLog.writelines(tweets)
