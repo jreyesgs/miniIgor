@@ -1,15 +1,17 @@
 # -*- coding:utf8 -*-
 import time
 import tweepy
-
-# Credenciales de tu app de Twitter
+import credenciales as cc
+# Formato de credenciales.py
+"""
 CONSUMER_KEY = "<Falta>"
 CONSUMER_SECRET = "<Falta>"
 ACCESS_KEY = "<Falta>"
 ACCESS_SECRET = "<Falta>"
+"""
 
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+auth = tweepy.OAuthHandler(cc.CONSUMER_KEY, cc.CONSUMER_SECRET)
+auth.set_access_token(cc.ACCESS_KEY, cc.ACCESS_SECRET)
 
 api = tweepy.API(auth)
 
@@ -20,7 +22,7 @@ try:
 	for tweet in tweets[:]:
 		tweet = tweet.strip(r'\n')
 		if len(tweet)<=140 and len(tweet)>0:
-			print ("Hablando...")
+			print ("Hablando: %s" % tweet)
 			api.update_status(status=tweet)
 			with open ('tweetsLog.txt', 'w') as tweetsLog:
 				tweets.remove(tweet)
