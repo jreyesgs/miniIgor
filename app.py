@@ -17,7 +17,7 @@ try:
 	with codecs.open('tweetsLog.txt', 'r+', 'utf-8') as tweetsLog:
 		tweets = tweetsLog.readlines()
 
-	for tweet in tweets[:]:
+	for tweet in tweets:
 		tweet = tweet.strip(r'\n')
 		if len(tweet)<=140 and len(tweet)>0:
 			print ("Hablando: %s" % tweet)
