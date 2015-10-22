@@ -2,7 +2,7 @@
 import time
 import tweepy
 
-# Formato de credenciales.py
+# Sustituir <Falta> por las credenciales de tu app de twitter
 CONSUMER_KEY = "<Falta>"
 CONSUMER_SECRET = "<Falta>"
 ACCESS_KEY = "<Falta>"
