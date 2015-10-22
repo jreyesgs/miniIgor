@@ -1,20 +1,17 @@
 # -*- coding:utf8 -*-
 import time
 import tweepy
-import credenciales as cc
+
 # Formato de credenciales.py
-"""
 CONSUMER_KEY = "<Falta>"
 CONSUMER_SECRET = "<Falta>"
 ACCESS_KEY = "<Falta>"
 ACCESS_SECRET = "<Falta>"
-"""
 
-auth = tweepy.OAuthHandler(cc.CONSUMER_KEY, cc.CONSUMER_SECRET)
-auth.set_access_token(cc.ACCESS_KEY, cc.ACCESS_SECRET)
+auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
 api = tweepy.API(auth)
-
 try:
 	with open('tweetsLog.txt', 'r+') as tweetsLog:
 		tweets = tweetsLog.readlines()
