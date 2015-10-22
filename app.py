@@ -1,6 +1,8 @@
 # -*- coding:utf8 -*-
+import time
 import tweepy
 
+# Credenciales de tu app de Twitter
 CONSUMER_KEY = "<Falta>"
 CONSUMER_SECRET = "<Falta>"
 ACCESS_KEY = "<Falta>"
@@ -10,13 +12,9 @@ auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 
 api = tweepy.API(auth)
-"""
-public_tweets = api.home_timeline()
-for tweet in public_tweets:
-    print(tweet.text.encode("utf-8"))
-"""
+
 try:
-	with open('hablando.txt', 'r+') as tweetsLog:
+	with open('tweetsLog.txt', 'r+') as tweetsLog:
 		tweets = tweetsLog.readlines()
 
 	for tweet in tweets[:]:
@@ -24,12 +22,12 @@ try:
 		if len(tweet)<=140 and len(tweet)>0:
 			print ("Hablando...")
 			api.update_status(status=tweet)
-			with open ('hablando.txt', 'w') as tweetsLog:
+			with open ('tweetsLog.txt', 'w') as tweetsLog:
 				tweets.remove(tweet)
 				tweetsLog.writelines(tweets)
-			time.sleep(900)
+			time.sleep(60*5) #Espera 5 minutos para mandar otro tweet
 		else:
-			with open ('hablando.txt', 'w') as tweetsLog:
+			with open ('tweetsLog.txt', 'w') as tweetsLog:
 				tweets.remove(tweet)
 				tweetsLog.writelines(tweets)
 			print ("Te has pasado, tu mensaje tiene más de 140 caracteres.")
@@ -38,4 +36,4 @@ try:
 
 
 except Exception as e:
-	print (e)
+	print ("Algo pasa: %s" % e)
